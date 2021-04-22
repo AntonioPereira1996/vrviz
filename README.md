@@ -65,6 +65,10 @@ In the following link common issues have been reported:
 
 https://old.reddit.com/r/linuxquestions/comments/abt1cr/vulkan_not_using_my_radeon_gpu/
 
+http://forums.debian.net/viewtopic.php?f=6&t=142110
+
+https://wiki.archlinux.org/index.php/Vulkan
+
 
 Running with Steam Runtime
 --------------------------
