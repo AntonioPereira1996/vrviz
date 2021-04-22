@@ -917,7 +917,7 @@ private:
         for(int ii=0;ii<tf_cache.size();ii++){
             tf::StampedTransform transform;
             try{
-              listener->lookupTransform(intermediate_frame, tf_cache[ii].frame_id,
+              listener->lookupTransform(tf_cache[ii].frame_id,intermediate_frame,
                                        ros::Time(0), transform);
             }
             catch (tf::TransformException ex){
@@ -933,14 +933,14 @@ private:
 
         /// Broadcast the transform of the HMD relative to the base
         /// \note we invert this because in the GL code, the headset is the 'root' transform, since that's the render target, whereas for ROS we want the 'ground' to be the root
-        broadcaster->sendTransform(tf::StampedTransform(TfTransform(m_mat4HMDPose).inverse(), ros::Time::now(), intermediate_frame, frame_prefix + "_hmd" ));
+        broadcaster->sendTransform(tf::StampedTransform(TfTransform(m_mat4HMDPose), ros::Time::now(), frame_prefix + "_hmd" , intermediate_frame));
 
         /// Publish the transform of the eyes relative to the base (I'm not sure why anyone would want them?)
         /// \todo these don't change, so we could store the transforms to not recalculate every timestep
 //        broadcaster->sendTransform(tf::StampedTransform(TfTransform(m_mat4eyePosLeft).inverse(), ros::Time::now(), frame_prefix + "_hmd", frame_prefix + "eye_left" ));
 //        broadcaster->sendTransform(tf::StampedTransform(TfTransform(m_mat4eyePosRight).inverse(), ros::Time::now(), frame_prefix + "_hmd", frame_prefix + "eye_right" ));
 
-        broadcaster->sendTransform(tf::StampedTransform(TfTransform(move_trans_mat),ros::Time::now(), base_frame, intermediate_frame));
+        broadcaster->sendTransform(tf::StampedTransform(TfTransform(move_trans_mat).inverse(),ros::Time::now(), intermediate_frame, base_frame));
 
         if(navgoal_mode)
         {
