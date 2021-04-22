@@ -34,6 +34,32 @@ These should be able to be installed with rosdep or with:
 sudo apt-get install libglew-dev libassimp-dev
 ```
 
+## BIRDLab installation notes
+
+**The instructions in this subsection were only tested in the BIRDLab's high performance workstation and with the AMD Radeon HD 7850 graphic's card.**
+
+Add the following option to your GRUB (you can use grub-customizer)
+```
+nano /etc/default/grub
+```
+Paste the following:
+```
+GRUB_CMDLINE_LINUX_DEFAULT="radeon.cik_support=0 radeon.si_support=0 amdgpu.cik_support=1 amdgpu.si_support=1"
+```
+
+Then run the following command:
+```
+update-grub
+reboot
+```
+
+When starting Steam or SteamVR do not forget to prioritize the drivers but prefixing the driver order:
+
+```
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json steam
+```
+
+
 Running with Steam Runtime
 --------------------------
 
