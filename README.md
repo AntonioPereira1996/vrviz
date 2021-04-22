@@ -53,11 +53,17 @@ update-grub
 reboot
 ```
 
-When starting Steam or SteamVR do not forget to prioritize the drivers but prefixing the driver order:
+When starting Steam/SteamVR/VRviz do not forget to prioritize the drivers but prefixing the driver order:
 
 ```
-VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json steam
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json steam
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json roslaunch vrviz vrviz.launch
 ```
+
+### Common issue
+In the following link common issues have been reported:
+
+https://old.reddit.com/r/linuxquestions/comments/abt1cr/vulkan_not_using_my_radeon_gpu/
 
 
 Running with Steam Runtime

@@ -917,7 +917,7 @@ private:
         for(int ii=0;ii<tf_cache.size();ii++){
             tf::StampedTransform transform;
             try{
-              listener->lookupTransform(tf_cache[ii].frame_id,intermediate_frame,
+              listener->lookupTransform(intermediate_frame, tf_cache[ii].frame_id,
                                        ros::Time(0), transform);
             }
             catch (tf::TransformException ex){
