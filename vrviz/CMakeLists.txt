@@ -88,3 +88,8 @@ file(GLOB SHARED_SRC_FILES
 add_executable(marker_test src/marker_test.cpp)
 target_link_libraries(marker_test ${catkin_LIBRARIES})
 
+add_executable(image_stitcher
+  src/image_stitcher/image_stitcher.cpp
+  src/image_stitcher/main_node.cpp)
+target_link_libraries(image_stitcher ${OpenCV_LIBRARIES} ${catkin_LIBRARIES})
+
